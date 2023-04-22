@@ -34,12 +34,7 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func faqHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, `<h1>FAQ Page</h1>
-	<ul>
-		<li>Is there a free version? Yes! We offer a free trial.</li>
-		<li>What are your support hours? We are open 24/7.</li>
-	</ul>
-	`)
+	executionTemplate(w, "templates/faq.gohtml")
 }
 
 
