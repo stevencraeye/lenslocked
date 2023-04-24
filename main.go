@@ -13,24 +13,18 @@ import (
 func main() {
 	r := chi.NewRouter()
 
-	tpl, err := views.Parse("templates/home.gohtml")
-	if err != nil {
-		panic(err)
-	}
-	r.Get("/", controllers.StaticHandler(tpl))
+	
+	r.Get("/", controllers.StaticHandler(
+		views.Must(views.Parse("templates/home.gohtml")),
+	))
 
+	r.Get("/contact", controllers.StaticHandler(
+		views.Must(views.Parse("templates/contact.gohtml")),
+	))
 	
-	tpl, err = views.Parse("templates/contact.gohtml")
-	if err != nil {
-		panic(err)
-	}
-	r.Get("/contact", controllers.StaticHandler(tpl))
-	
-	tpl, err = views.Parse("templates/faq.gohtml")
-	if err != nil {
-		panic(err)
-	}
-	r.Get("/faq", controllers.StaticHandler(tpl))
+	r.Get("/faq", controllers.StaticHandler(
+		views.Must(views.Parse("templates/faq.gohtml")),
+	))
 	
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {http.Error(w, "Page not found", http.StatusNotFound)})
 	fmt.Println("Starting the server on :3000...")
