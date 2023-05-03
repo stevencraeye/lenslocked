@@ -64,10 +64,12 @@ func main() {
 	// Insert some data...
 	name := "Steven"
 	email := "steve@user.com"
-	_, err = db.Exec(`
+	row := db.QueryRow(`
 		INSERT INTO users (name, email)
-		VALUES ($1, $2);
+		VALUES ($1, $2) RETURN id;
 	`, name, email)
+	var id int 
+	err = row.Scan(&id)
 	if err != nil {
 		panic(err)
 	}
