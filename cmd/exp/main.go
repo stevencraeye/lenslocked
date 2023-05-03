@@ -28,7 +28,7 @@ func main() {
 		User: "baloo",
 		Password: "junglebook",
 		Database: "lenslocked",
-		SSLMode: "disabled",
+		SSLMode: "disable",
 	}
 	db, err := sql.Open("pgx", cfg.String())
 	if err != nil {
