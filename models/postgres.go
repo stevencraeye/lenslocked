@@ -10,7 +10,7 @@ import (
 // Open will open a sql connection with provided PG database.
 // Callers of Open need to ensure db is closed via db.Close().
 func Open(config PostgresConfig) (*sql.DB, error) {
-	db, err := sql.Open("pgx", cfg.String())
+	db, err := sql.Open("pgx", config.String())
 	if err != nil {
 		return nil, fmt.Errorf("open: %w", err)
 	}
