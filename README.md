@@ -3,6 +3,10 @@ Web Development with GO - from Jon Calhoun
 https://courses.calhoun.io/courses
 
 
+```bash
+docker exec -it lenslocked-db-1 /usr/bin/psql -U baloo -d lenslocked
+```
+
 
 
 4 steps to secure passwords:
